@@ -107,16 +107,15 @@ const RestLogin = (props, { ...others }) => {
                 onSubmit={(values, { setErrors, setStatus, setSubmitting }) => {
                     try {
                         axios
-                            .post( configData.API_SERVER + 'users/login', {
+                            .post( configData.API_SERVER + '/auth/login', {
                                 password: values.password,
                                 email: values.email
                             })
                             .then(function (response) {
-                                if (response.data.success) {
-                                    console.log(response.data);
+                                if (response.data.code === 200) {
                                     dispatcher({
                                         type: ACCOUNT_INITIALIZE,
-                                        payload: { isLoggedIn: true, user: response.data.user, token: response.data.token }
+                                        payload: { isLoggedIn: true, user: response.data.data, token: response.data.data.access_token }
                                     });
                                     if (scriptedRef.current) {
                                         setStatus({ success: true });
@@ -124,13 +123,13 @@ const RestLogin = (props, { ...others }) => {
                                     }
                                 } else {
                                     setStatus({ success: false });
-                                    setErrors({ submit: response.data.msg });
+                                    setErrors({ submit: response.message });
                                     setSubmitting(false);
                                 }
                             })
                             .catch(function (error) {
                                 setStatus({ success: false });
-                                setErrors({ submit: error.response.data.msg });
+                                setErrors({ submit: error.response.message });
                                 setSubmitting(false);
                             });
                     } catch (err) {

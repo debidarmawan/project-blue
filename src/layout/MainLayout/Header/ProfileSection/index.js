@@ -132,17 +132,10 @@ const ProfileSection = () => {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
     const handleLogout = () => {
-        console.log(account.token);
         axios
-            .post( configData.API_SERVER + 'users/logout', {token: `${account.token}`}, { headers: { Authorization: `${account.token}` } })
-            .then(function (response) {
-                
-                // Force the LOGOUT
-                //if (response.data.success) {
-                    dispatcher({ type: LOGOUT });
-                //} else {
-                //    console.log('response - ', response.data.msg);
-                //}
+            .post(configData.API_SERVER + '/auth/logout', null, { headers: { Authorization: `Bearer ${account.token}` } })
+            .then(function () {
+                dispatcher({ type: LOGOUT });
             })
             .catch(function (error) {
                 console.log('error - ', error);
