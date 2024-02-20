@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import configData from '../../../../config';
 
 // material-ui
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 import {
     Box,
     Button,
@@ -19,7 +19,7 @@ import {
     OutlinedInput,
     Stack,
     Typography
-} from '@material-ui/core';
+} from '@mui/material';
 
 // third party
 import * as Yup from 'yup';
@@ -32,8 +32,8 @@ import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { ACCOUNT_INITIALIZE } from './../../../../store/actions';
 
 // assets
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 // style constant
 const useStyles = makeStyles((theme) => ({

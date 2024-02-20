@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
-import { makeStyles, useTheme } from '@material-ui/styles';
-import { AppBar, CssBaseline, Toolbar, useMediaQuery } from '@material-ui/core';
+import { makeStyles, useTheme } from '@mui/styles';
+import { AppBar, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 
 // third-party
 import clsx from 'clsx';

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // material-ui
-import { makeStyles } from '@material-ui/styles';
-import { Avatar, Box, ButtonBase, Card, CardContent, Grid, InputAdornment, OutlinedInput, Popper } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Avatar, Box, ButtonBase, Card, CardContent, Grid, InputAdornment, OutlinedInput, Popper } from '@mui/material';
 
 // third-party
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state';
