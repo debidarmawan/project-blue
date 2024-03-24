@@ -131,6 +131,7 @@ const ProfileSection = () => {
 
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
+    
     const handleLogout = () => {
         axios
             .post(configData.API_SERVER + '/auth/logout', null, { headers: { Authorization: `Bearer ${account.token}` } })
@@ -141,9 +142,11 @@ const ProfileSection = () => {
                 console.log('error - ', error);
             });
     };
+    
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
+    
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
@@ -151,6 +154,7 @@ const ProfileSection = () => {
 
         setOpen(false);
     };
+    
     const prevOpen = React.useRef(open);
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
@@ -208,13 +212,13 @@ const ProfileSection = () => {
                                     <CardContent className={classes.cardContent}>
                                         <Grid container direction="column" spacing={0}>
                                             <Grid item className={classes.flex}>
-                                                <Typography variant="h4">Good Morning,</Typography>
+                                                <Typography variant="h4">Hello,</Typography>
                                                 <Typography component="span" variant="h4" className={classes.name}>
-                                                    John
+                                                    {account.user.name}
                                                 </Typography>
                                             </Grid>
                                             <Grid item>
-                                                <Typography variant="subtitle2">Project Admin</Typography>
+                                                <Typography variant="subtitle2">{account.user.role}</Typography>
                                             </Grid>
                                         </Grid>
                                         <OutlinedInput
